@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	experimental: {
-		serverActions: true,
-	},
 	env: {
 		BASE_URL: process.env.BASE_URL,
 		COOKIE_NAME: process.env.COOKIE_NAME,

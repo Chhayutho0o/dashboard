@@ -13,6 +13,7 @@ import { login } from "@/actions/auth";
 import { Loader2 } from "lucide-react";
 import authValidation from "@/validation/auth";
 import { toast } from "sonner";
+import { Icons } from "../icons";
 
 interface LoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -70,14 +71,26 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
 								</div>
 								<div className="grid gap-1 mt-2">
 									<Label className="sr-only" htmlFor="username">
-										Email
+										Password
 									</Label>
 									<Field
 										name="password"
-										type="password"
+										type={showPassword ? "text" : "password"}
 										placeholder="enter your password"
 										component={Input}
 									/>
+									<Button
+										type="button"
+										variant={"ghost"}
+										className="absolute flex justify-self-end px-4"
+										onClick={() => setShowPassword(!showPassword)}
+									>
+										{showPassword ? (
+											<Icons.view className="h-5 w-5" />
+										) : (
+											<Icons.view_off className="h-5 w-5" />
+										)}
+									</Button>
 								</div>
 								<Separator className="my-2" />
 								<Button

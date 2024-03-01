@@ -1,5 +1,11 @@
-import React from "react";
+import { notFound } from "next/navigation";
 
-export default function GameForm() {
+type GameFormProps = {
+	searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default function GameForm({ searchParams }: GameFormProps) {
+	if (searchParams) return notFound();
+
 	return <div>GameForm</div>;
 }

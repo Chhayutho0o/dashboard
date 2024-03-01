@@ -23,6 +23,7 @@ import {
 	SunMedium,
 	Trash,
 	Twitter,
+	EyeOff,
 	User,
 	X,
 	ChevronDown,
@@ -35,6 +36,7 @@ import {
 export type Icon = LucideIcon;
 
 export const Icons = {
+	view_off: EyeOff,
 	view: Eye,
 	edit: Edit,
 	delete: Trash2,

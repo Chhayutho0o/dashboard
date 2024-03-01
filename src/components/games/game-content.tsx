@@ -51,7 +51,7 @@ export default function GameContent({ searchParams }: any) {
 								<TableCell>{item.id}</TableCell>
 								<TableCell>{item.title}</TableCell>
 								<TableCell>
-									<RowAction title="Game" id={item.id} view edit />
+									<RowAction title="game" id={item.id} view edit />
 								</TableCell>
 							</TableRow>
 						))}

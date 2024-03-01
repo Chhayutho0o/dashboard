@@ -1,7 +1,6 @@
 import LoginForm from "@/components/auth/login-form";
 import ActionButton from "@/components/commons/action-button";
 import { Icons } from "@/components/icons";
-import Link from "next/link";
 
 export default function LoginPage() {
 	return (
@@ -23,14 +22,6 @@ export default function LoginPage() {
 					</p>
 				</div>
 				<LoginForm />
-				<p className="px-8 text-center text-sm text-muted-foreground">
-					<Link
-						href="/register"
-						className="hover:text-brand underline underline-offset-4"
-					>
-						Don&apos;t have an account? Sign Up
-					</Link>
-				</p>
 			</div>
 		</div>
 	);
