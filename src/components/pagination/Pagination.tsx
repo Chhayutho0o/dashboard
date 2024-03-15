@@ -32,7 +32,7 @@ const Pagination = (props: any) => {
 	};
 
 	return (
-		<div className="flex items-center gap-4 my-4 justify-center w-full px-4">
+		<div className="flex items-center gap-4 my-4 justify-center w-full">
 			<button
 				className="rounded-md disabled:pointer-events-none disabled:opacity-50 w-10 h-10 hover:bg-accent justify-center items-center flex outline-none"
 				onClick={onPrevious}

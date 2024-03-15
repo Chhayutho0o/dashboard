@@ -1,3 +1,4 @@
+import { fetchGames } from "@/actions/games";
 import ActionButton from "@/components/commons/action-button";
 import DashboardHeader from "@/components/dashboard/header";
 import DashboardShell from "@/components/dashboard/shell";
@@ -8,6 +9,8 @@ type GamePageProps = {
 };
 
 export default function GamePage({ searchParams }: GamePageProps) {
+  // const {data, meta} = fetchGames(searchParams)
+
 	return (
 		<DashboardShell>
 			<DashboardHeader heading="Games" text="Create and manage game.">

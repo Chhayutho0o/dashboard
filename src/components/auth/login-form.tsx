@@ -5,15 +5,15 @@ import { cn } from "@/lib/utils";
 import { AuthForm } from "@/types";
 import { Field, Form, Formik, FormikProps } from "formik";
 import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "@/hooks/useRouter";
 import { login } from "@/actions/auth";
 import { Loader2 } from "lucide-react";
 import authValidation from "@/validation/auth";
 import { toast } from "sonner";
-import { Icons } from "../icons";
+import { Icons } from "@/components/icons";
+import { Input } from "@/components/formikInput";
 
 interface LoginFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -22,7 +22,8 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
 	const [isPending, startTransition] = useTransition();
 	const [showPassword, setShowPassword] = useState(false);
 	const initValue: AuthForm = {
-		username: "",
+    // email: "",
+    username:"",
 		password: "",
 	};
 
@@ -58,25 +59,36 @@ export default function LoginForm({ className, ...props }: LoginFormProps) {
 					return (
 						<Form>
 							<div className="grid gap-2">
-								<div className="grid gap-1">
-									<Label className="sr-only" htmlFor="username">
+								{/* <div className="grid gap-1">
+									<Label className="sr-only" htmlFor="email">
 										Email
+									</Label>
+									<Field
+										name="email"
+										type="text"
+										placeholder="Enter your email"
+										component={Input}
+									/>
+                </div> */}
+                <div className="grid gap-1">
+									<Label className="sr-only" htmlFor="username">
+										Username
 									</Label>
 									<Field
 										name="username"
 										type="text"
-										placeholder="enter your username"
+										placeholder="Enter your username"
 										component={Input}
 									/>
 								</div>
 								<div className="grid gap-1 mt-2">
-									<Label className="sr-only" htmlFor="username">
+									<Label className="sr-only" htmlFor="password">
 										Password
 									</Label>
 									<Field
 										name="password"
 										type={showPassword ? "text" : "password"}
-										placeholder="enter your password"
+										placeholder="Enter your password"
 										component={Input}
 									/>
 									<Button

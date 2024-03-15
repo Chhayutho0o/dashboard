@@ -5,43 +5,51 @@ import { cn } from "@/lib/utils";
 import { Icons } from "@/components/icons";
 
 type ActionButtonProps = {
-	href: string;
-	className?: string;
-	title: string;
-	name?: keyof typeof Icons;
-	variant?:
-		| "ghost"
-		| "default"
-		| "destructive"
-		| "outline"
-		| "secondary"
-		| "ghost"
-		| "link";
+  href?: string;
+  className?: string;
+  title: string;
+  name?: keyof typeof Icons;
+  variant?:
+  | "ghost"
+  | "default"
+  | "destructive"
+  | "outline"
+  | "secondary"
+  | "ghost"
+  | "link";
 };
 
 function ActionButton({
-	href,
-	className,
-	name,
-	title,
-	variant = "default",
+  href,
+  className,
+  name,
+  title,
+  variant = "default",
 }: ActionButtonProps) {
-	let Icon;
+  let Icon;
 
-	if (name) {
-		Icon = Icons[name];
-	}
+  if (name) {
+    Icon = Icons[name];
+  }
 
-	return (
-		<div className={cn(className)}>
-			<Button variant={variant}>
-				<Link href={href} className="flex gap-1 items-center">
-					{name && Icon && <Icon />}
-					{title}
-				</Link>
-			</Button>
-		</div>
-	);
+  return (
+    <div className={cn(className)}>
+      <Button variant={variant}>
+        {href ? (
+          <Link href={href} className="flex gap-1 items-center">
+            {name && Icon && <Icon />}
+            {title}
+          </Link>
+
+        ) : (
+          <>
+            {name && Icon && <Icon />}
+            {title}
+          </>
+        )}
+      </Button>
+    </div>
+  );
 }
 
 export default ActionButton;

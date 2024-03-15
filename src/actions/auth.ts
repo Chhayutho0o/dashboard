@@ -6,6 +6,7 @@ import { getCookies, setCookies, removeCookie } from "@/utils/cookies"
 export const fetchProfile = async () => {
   const headers = await getCookies()
   const tokenValue = headers?.value.token
+
   if (!tokenValue) return { status: 'error' }
 
   try {
@@ -13,15 +14,13 @@ export const fetchProfile = async () => {
     setAuthToken(tokenValue)
     return { status: "success", data }
   } catch (error) {
-    console.log(error)
     return { status: "error" }
   }
 }
 
 export const login = async (params: { [name: string]: any }) => {
   try {
-    const headers = await getCookies()
-    const { data } = await fetchJson(POST('/auth/login', params, headers.value.token))
+    const { data } = await fetchJson(POST('/auth/login', params))
     setAuthToken(data.token)
     setCookies(data.token)
     return { message: data.message }
@@ -32,7 +31,7 @@ export const login = async (params: { [name: string]: any }) => {
 
 export const logout = async () => {
   try {
-    await fetchJson(DELETE('/auth/logout'))
+    await fetchJson(DELETE('/v1/admins/auth/logout'))
   } catch (error) { }
   removeCookie()
   removeAuthToken()

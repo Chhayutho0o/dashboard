@@ -1,22 +1,16 @@
 import { fetchUsers } from "@/actions/users";
 import DashboardHeader from "@/components/dashboard/header";
 import DashboardShell from "@/components/dashboard/shell";
-import UserContent from "@/components/users/user-content";
+import { DataTable } from "@/components/table/data-table";
+import { columns } from "@/components/users/columns";
 
-type UserPageProps = {
-	searchParams: { [key: string]: string | string[] | undefined };
-};
+export default async function UserPage() {
+  const { data } = await fetchUsers({ limit: 0 });
 
-export default async function UserPage({ searchParams }: UserPageProps) {
-	const users = await fetchUsers(searchParams);
-
-	return (
-		<DashboardShell>
-			<DashboardHeader
-				heading="Users"
-				text="Create and manage users."
-			></DashboardHeader>
-			<UserContent data={users} searchParams={searchParams} />
-		</DashboardShell>
-	);
+  return (
+    <DashboardShell>
+      <DashboardHeader heading="Users" text="Create and manage users."></DashboardHeader>
+      <DataTable columns={columns} data={data} searchKey={"firstName"} />
+    </DashboardShell>
+  );
 }

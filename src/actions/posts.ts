@@ -2,16 +2,18 @@
 
 import { GET, fetchJson } from "@/base-api/request"
 
-export const fetchPosts = async (params: any) => {
+export const fetchPosts = async (params?: any) => {
   try {
-    const data = await fetchJson(GET('/posts?limit=10', params))
+    const { data } = await fetchJson(GET('/posts', params))
 
-    console.log(data.data)
-    return data.data
+    return {
+      status: "success",
+      data: data.posts
+    }
   } catch (error: any) {
     return {
       status: 'error',
-      message: error.response.data
+      message: error.response
     }
   }
 }

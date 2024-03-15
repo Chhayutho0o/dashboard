@@ -1,3 +1,4 @@
+
 import { Icons } from "@/components/icons"
 
 export type NavItem = {
@@ -16,14 +17,19 @@ export type DashboardConfig = {
 }
 
 type AuthForm = {
+  // email?: string,
   username: string,
   password: string
 }
 
-type Data = {
+type Meta = {
   total: number
-  skip: number
-  limit: number
+  perPage: number
+  currentPage: number
+  next: number
+  totalPage: number
+  previous: number
+  pages: number[]
 }
 
 type Post = {
@@ -35,12 +41,13 @@ type Post = {
   tags: string[]
 }
 
-interface Posts extends Data {
+interface Posts extends Meta {
   posts: Post[]
 }
 
 type User = {
   id: number
+  username: string
   firstName: string
   lastName: string
   age: number
@@ -51,6 +58,6 @@ type User = {
   image: string
 }
 
-interface Users extends Data {
+interface Users extends Meta {
   users: User[]
 }
